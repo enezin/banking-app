@@ -12,6 +12,11 @@
 </head>
 <body>
 <h1>Banking App</h1>
-<p><a href="${pageContext.request.contextPath}/users">На главную</a></p>
+<p><a href="${pageContext.request.contextPath}/">На главную</a></p>
+    <c:if test="${sessionScope.user != null}">
+        <form action="/logout" method="get">
+            <input type="submit" value="Выход">
+        </form>
+    </c:if>
 </body>
 </html>

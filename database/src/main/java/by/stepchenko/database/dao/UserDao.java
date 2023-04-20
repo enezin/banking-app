@@ -16,15 +16,24 @@ public final class UserDao {
     private final DummyDatabase db = DummyDatabase.getInstance();
 
     public User create(User user) {
-        return db.getUsers().put(user.getId(), user);
-    }
-
-    public List<User> getAll() {
-        return new ArrayList<>(db.getUsers().values());
+        Long dummyID = db.getUsers().keySet().size() + 1L;
+        user.setId(dummyID);
+        return db.getUsers().put(dummyID, user);
     }
 
     public Optional<User> getById(Long id) {
         return Optional.ofNullable(db.getUsers().get(id));
+    }
+
+    public Optional<User> getByEmailAndPassword(String email, String password) {
+        return db.getUsers().values().stream()
+                .filter(user -> user.getEmail().equals(email))
+                .filter(user -> user.getPassword().equals(password))
+                .findAny();
+    }
+
+    public List<User> getAll() {
+        return new ArrayList<>(db.getUsers().values());
     }
 
     public User delete(Long id) {
