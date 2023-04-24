@@ -8,13 +8,19 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class UserService {
+
     public static final long ID = 9223372036854775807L;
     private static final UserService INSTANCE = new UserService();
 
     private final UserDao userDao = UserDao.getInstance();
+
+    public User create(User user) {
+        return userDao.create(user);
+    }
 
     public User getById(Long id) {
         return userDao.getById(id)
@@ -28,6 +34,10 @@ public final class UserService {
                         .password("mL4hYzc0t8wbVdDfQWdo")
                         .registrationDate(LocalDate.EPOCH)
                         .build());
+    }
+
+    public Optional<User> getByEmailAndPassword(String email, String password) {
+        return userDao.getByEmailAndPassword(email, password);
     }
 
     public List<User> getAll() {

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>User ID:${user.id }</title>
+    <title>Пользователь: ${user.id }</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
