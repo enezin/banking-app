@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dmitry Stepchenko
@@ -10,18 +9,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>User list</title>
+    <title>Список пользователей</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
-<c:forEach var="user" items="${requestScope.users}">
-    <p>
-            ${user.id} ${user.firstName} ${user.lastName}
-            ${user.email} ${user.registrationDate}
-            <a href="${pageContext.request.contextPath}/users?id=${user.id}" target="_blank">Подробнее</a>
-    </p>
-</c:forEach>
+<table border="1">
+    <tbody>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Дата рождения</th>
+        <th>Пол</th>
+        <th>E-mail</th>
+        <th>Дата регистрации</th>
+        <th>Счета</th>
+        <th>Заказы</th>
+        <th colspan=2>Действия</th>
+    </tr>
+    <c:forEach var="user" items="${requestScope.users}">
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.birthdate}</td>
+            <td>${user.gender.getTitle()}</td>
+            <td>${user.email}</td>
+            <td>${user.registrationDate}</td>
+            <td><a href="${pageContext.request.contextPath}/bankaccounts?userId=${user.id}">Посмотреть</a></td>
+            <td>Заглушка</td>
+            <td>Редактировать</td>
+            <td>Удалить</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 
 <%@ include file="footer.jsp" %>
 </body>

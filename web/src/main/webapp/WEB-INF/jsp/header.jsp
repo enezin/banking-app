@@ -12,7 +12,8 @@
 </head>
 <body>
 <h1>Banking App</h1>
-<p><a href="${pageContext.request.contextPath}/">На главную</a></p>
+<c:if test="${sessionScope.user != null}"><p><a href="${pageContext.request.contextPath}/menu">На главную</a></p></c:if>
+<c:if test="${sessionScope.user == null}"><p><a href="${pageContext.request.contextPath}/">На главную</a></p></c:if>
     <c:if test="${sessionScope.user != null}">
         <form action="/logout" method="get">
             <input type="submit" value="Выход">

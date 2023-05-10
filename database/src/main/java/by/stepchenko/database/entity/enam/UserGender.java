@@ -1,10 +1,9 @@
-package by.stepchenko.database.util;
+package by.stepchenko.database.entity.enam;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
 public enum UserGender {
     MALE("Мужской"),
