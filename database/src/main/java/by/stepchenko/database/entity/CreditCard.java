@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -12,8 +12,8 @@ import java.time.LocalDate;
 public class CreditCard {
     private Long id;
     private Long cardNumber;
-    private Double creditLimit;
-    private LocalDate registrationDate = LocalDate.now();
-    private Long bankAccountId;
+    private Double balance;
+    private LocalDateTime registrationDate;
     private Boolean isActive;
+    private BankAccount bankAccount;
 }

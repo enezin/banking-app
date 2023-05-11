@@ -22,8 +22,7 @@
   <label for="birthdateId">Выберете день, месяц и год Вашего рождения</label><br>
   <input type="date" id="birthdateId" name="birthdate" placeholder="Дата Вашего рождения"><br>
   <label for="genderId">Укажите Ваш пол</label><br>
-  <select id="genderId" name="gender" required="required">
-    <option value="">Укажите Ваш пол</option>
+  <select id="genderId" name="gender">
     <option value="MALE">Мужской</option>
     <option value="FEMALE">Женский</option>
     <option value="OTHER">Другой</option>

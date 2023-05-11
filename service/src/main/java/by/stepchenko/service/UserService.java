@@ -2,11 +2,12 @@ package by.stepchenko.service;
 
 import by.stepchenko.database.dao.UserDao;
 import by.stepchenko.database.entity.User;
-import by.stepchenko.database.util.UserGender;
+import by.stepchenko.database.entity.enam.UserGender;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +19,12 @@ public final class UserService {
 
     private final UserDao userDao = UserDao.getInstance();
 
-    public User create(User user) {
+    public Optional<User> create(User user) {
         return userDao.create(user);
     }
 
     public User getById(Long id) {
-        return userDao.getById(id)
+        return userDao.findById(id)
                 .orElse(User.builder()
                         .id(ID)
                         .firstName("User")
@@ -32,16 +33,16 @@ public final class UserService {
                         .gender(UserGender.MALE)
                         .email("unknown")
                         .password("mL4hYzc0t8wbVdDfQWdo")
-                        .registrationDate(LocalDate.EPOCH)
+                        .registrationDate(LocalDateTime.now())
                         .build());
     }
 
     public Optional<User> getByEmailAndPassword(String email, String password) {
-        return userDao.getByEmailAndPassword(email, password);
+        return userDao.findByEmailAndPassword(email, password);
     }
 
-    public List<User> getAll() {
-        return userDao.getAll();
+    public List<User> findAll() {
+        return userDao.findAll();
     }
 
     public static UserService getInstance() {

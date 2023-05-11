@@ -35,7 +35,7 @@ public class AuthorizationServlet extends HttpServlet {
     @SneakyThrows
     private static void successAuthorization(HttpServletRequest req, HttpServletResponse resp, User user) {
         req.getSession().setAttribute("user", user);
-        resp.sendRedirect("/users");
+        resp.sendRedirect("/menu");
     }
 
     @SneakyThrows

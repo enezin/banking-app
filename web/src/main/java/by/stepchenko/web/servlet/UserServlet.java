@@ -18,7 +18,7 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         if (id == null) {
-            req.setAttribute("users", userService.getAll());
+            req.setAttribute("users", userService.findAll());
             req.getRequestDispatcher(PagesUtil.USERS).forward(req, resp);
         } else {
             req.setAttribute("user", userService.getById(Long.parseLong(id)));
